@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <!--<head th:include="layout :: head"></head>-->
+
+    <body>
+        <!-- <nav th:replace="layout :: menu"></nav> -->
+        <main class="container">
+            <a href="/clientes/novo" class="btn btn-primary">Novo</a>
+            
+            <table class="table" id="tabclientes">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Endereço</th>
+                    </tr>
+                </thead>
+            </table>
+        </main>
+    </body>
+</html>
