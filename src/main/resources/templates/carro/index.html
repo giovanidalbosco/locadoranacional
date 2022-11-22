@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"></html>
+
+<head th:include="layout :: head"></head>
+    
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container bg-light">
+        <a href="/carros/novo" class="btn btn-primary">Novo</a>
+        <div class="album py-5 bg-light" id="tabcarros">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+                
+                    <div th:each="carro: ${listaCarros}" class="col">
+                        <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="270"
+                                xmlns="http://www.w3.org/2000/svg"
+                                role="img"
+                                aria-label="Placeholder: Thumbnail"
+                                preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <rect width="100%" height="100%" fill="#55595c"></rect>
+                            </svg>
+    
+                            <ul class="list-group">
+
+                                <li class="list-group-item" th:text="${carro.marca}"></li>
+                                <li class="list-group-item" th:text="${carro.modelo}"></li>
+                                <li class="list-group-item" th:text="${carro.placa}"></li>
+                                <li class="list-group-item" th:text="${carro.cor}"></li>
+                                <li class="list-group-item" th:text="${carro.custoDiaria}"></li>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Detalhes</a>
+                                        <button class="btn btn-danger js-delete" th:data-id="${carro.id}">Alugar</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Alterar</a>
+                                        <button class="btn btn-danger js-delete" th:data-id="${carro.id}">Excluir</button>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" tabindex="-1" id="modalcarro">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Carro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirmar exclusão do carro?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/scriptCarro.js}"></script>
+
+</body>
