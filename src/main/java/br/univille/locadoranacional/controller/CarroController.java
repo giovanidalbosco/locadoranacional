@@ -8,50 +8,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.univille.locadoranacional.entity.Funcionario;
-import br.univille.locadoranacional.service.FuncionarioService;
+import br.univille.locadoranacional.entity.Carro;
+import br.univille.locadoranacional.service.CarroService;
 
 
 @Controller
-@RequestMapping("/funcionarios")
-public class FuncionarioController {
+@RequestMapping("/carros")
+public class CarroController {
     
     @Autowired
-    private FuncionarioService servico;
+    private CarroService servico;
 
     @GetMapping
     public ModelAndView index() {
-        var listaFuncionarios = servico.getAll();
+        var listaCarros = servico.getAll();
 
-        return new ModelAndView("funcionario/index", "listaFuncionarios", listaFuncionarios);
+        return new ModelAndView("carro/index", "listaCarros", listaCarros);
     }
 
     @GetMapping("/novo")
     public ModelAndView novo() {
-        var funcionario = new Funcionario();
+        var carro = new Carro();
 
-        return new ModelAndView("funcionario/form", "funcionario", funcionario);
+        return new ModelAndView("carro/form", "carro", carro);
     }
 
     @PostMapping(params = "form")
-    public ModelAndView salvar(Funcionario funcionario) {
-        servico.save(funcionario);
+    public ModelAndView salvar(Carro carro) {
+        servico.save(carro);
 
-        return new ModelAndView("redirect:/funcionarios");
+        return new ModelAndView("redirect:/carros");
     }
 
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") long id) {
-        var funcionario = servico.getOne(id);
-
-        return new ModelAndView("funcionario/form", "funcionario", funcionario);
+        var carro = servico.getOne(id);
+        return new ModelAndView("carro/form", "carro", carro);
     }
 
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") long id) {
         servico.delete(id);
 
-        return new ModelAndView("redirect:/funcionarios");
+        return new ModelAndView("redirect:/carros");
     }
-
+    
 }
