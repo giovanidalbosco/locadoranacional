@@ -16,10 +16,12 @@
             <div class="form-group">
                 <label for="txttel">Telefone:</label>
                 <input type="text" class="form-control" id="txttel" th:field="*{telefone}">
+                <p th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="alert alert-danger"></p>
             </div>
             <div class="form-group">
                 <label for="txtemail">Email:</label>
                 <input type="text" class="form-control" id="txtemail" th:field="*{email}">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></p>
             </div>
             <div class="form-group">
                 <label for="txtendereco">Endereço:</label>
