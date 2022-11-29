@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: head"></head>
+
+    <body>
+        <nav th:replace="layout :: menu"></nav>
+        <main class="container">
+            <a href="/aluguel/novo" class="btn btn-primary">Novo</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Diarias</th>
+                        <th>Data da Retirada</th>
+                        <th>Data da Entrega</th>
+                      
+                    </tr>
+                </thead>
+               
+            </table>   
+        </main>
+        <footer th:include="layout :: footer"></footer>
+    </body>
+</html>
