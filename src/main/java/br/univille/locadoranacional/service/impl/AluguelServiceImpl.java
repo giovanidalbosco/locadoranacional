@@ -1,10 +1,8 @@
 package br.univille.locadoranacional.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.univille.locadoranacional.entity.Aluguel;
 import br.univille.locadoranacional.repository.AluguelRepository;
 
