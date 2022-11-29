@@ -1,7 +1,10 @@
 package br.univille.locadoranacional.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.locadoranacional.entity.Funcionario;
 import br.univille.locadoranacional.service.FuncionarioService;
+
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -33,7 +37,11 @@ public class FuncionarioController {
     }
 
     @PostMapping(params = "form")
-    public ModelAndView salvar(Funcionario funcionario) {
+    public ModelAndView salvar(@Valid Funcionario funcionario, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("funcionario/form", "funcionario", funcionario);
+        }
+        
         servico.save(funcionario);
 
         return new ModelAndView("redirect:/funcionarios");
