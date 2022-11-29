@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.univille.locadoranacional.entity.Carro;
 import br.univille.locadoranacional.repository.CarroRepository;
@@ -39,4 +40,12 @@ public class CarroServiceImpl implements CarroService {
     public void delete(long id) {
         repositorio.deleteById(id);        
     }
+
+    @Override
+    public String salvarFoto(MultipartFile file) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
 }
