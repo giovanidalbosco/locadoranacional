@@ -18,6 +18,13 @@
                       
                     </tr>
                 </thead>
+                <tbody>
+                    <tr th:each="umCliente : ${listaClientes}">
+                    <td th:text="${umCliente.diaria}"></td>
+                    <td th:text="${umCliente.retirada}"></td>
+                    <td th:text="${umCliente.entrega}"></td>  
+
+                </tbody>
                
             </table>   
         </main>

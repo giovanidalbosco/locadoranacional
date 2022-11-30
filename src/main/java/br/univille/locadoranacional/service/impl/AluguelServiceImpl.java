@@ -33,5 +33,10 @@ public class AluguelServiceImpl implements AluguelService {
     public void delete(long id) {
         repositorio.deleteById(id);
     }
+    @Override
+    public Object getOne(long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }
