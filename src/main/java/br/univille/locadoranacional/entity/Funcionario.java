@@ -21,6 +21,7 @@ public class Funcionario {
     private String usuario;
     private String senha;
     private String cargo;
+    
 
 
     public long getId() {

@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <!--<head th:include="layout :: head"></head>-->
+    <head th:include="layout :: head"></head>
 
     <body>
-        <!-- <nav th:replace="layout :: menu"></nav> -->
+         <nav th:replace="layout :: menu"></nav> 
         <main class="container">
             <a href="/clientes/novo" class="btn btn-primary">Novo</a>
             
@@ -19,7 +19,34 @@
                         <th>Endereço</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr th:each="umCliente : ${listaClientes}">
+                    <td th:text="${umCliente.id}"></td>
+                    <td th:text="${umCliente.nome}"></td>
+                    <td th:text="${umCliente.telefone}"></td>
+                    <td th:text="${umCliente.email}"></td>
+                    <td th:text="${umCliente.endereco}"></td>    
+
+                </tbody>
             </table>
         </main>
+
+        <div class="modal" tabindex="-1" id="modalcliente">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirmar exclusão do Cliente?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
