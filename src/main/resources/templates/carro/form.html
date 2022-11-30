@@ -7,7 +7,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <form th:action="@{/carros/(form)}" method="POST" th:object="${carro}">
+        <form th:action="@{/carros/(form)}" method="POST" th:object="${carro}" enctype="multipart/form-data">
             <input type="hidden" th:field="${carro.id}">
             <div class="form-group">
                 <label for="txtmarca">Marca:</label>
