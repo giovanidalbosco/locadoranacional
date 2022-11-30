@@ -2,10 +2,12 @@ package br.univille.locadoranacional.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Aluguel {
@@ -16,7 +18,16 @@ public class Aluguel {
     private int diarias;
     private Date dataRetirada;
     private Date dataEntrega;
-  
+   
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Cliente cliente;
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Funcionario funcionario;
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Carro carro;
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Pagamento pagamento;
+
     public long getId() {
         return id;
     }

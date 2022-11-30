@@ -14,5 +14,7 @@ public interface AluguelService {
 
     void delete(long id);
 
+    Object getOne(long id);
+
    
 }

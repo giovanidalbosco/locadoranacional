@@ -7,7 +7,7 @@
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-          <form th:action="@{/clientes/(form)}" 
+          <form th:action="@{/cliente/(form)}" 
                 method="POST" th:object="${cliente}">
 
                 <input type="hidden" th:field="*{id}">
