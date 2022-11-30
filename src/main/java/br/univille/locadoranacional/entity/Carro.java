@@ -15,6 +15,7 @@ public class Carro {
     private String placa;
     private String cor;
     private float custoDiaria;
+    private String foto;
 
     public long getId() {
         return id;
@@ -56,6 +57,13 @@ public class Carro {
     }
     public void setCustoDiaria(float custoDiaria) {
         this.custoDiaria = custoDiaria;
+    }
+    
+    public String getFoto() {
+        return foto;
+    }
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 }
