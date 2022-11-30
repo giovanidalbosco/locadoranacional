@@ -7,7 +7,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <form th:action="@{/carros/(form)}" method="POST" th:object="${carro}">
+        <form th:action="@{/carros/(form)}" method="POST" th:object="${carro}" enctype="multipart/form-data">
             <input type="hidden" th:field="${carro.id}">
             <div class="form-group">
                 <label for="txtmarca">Marca:</label>
@@ -28,6 +28,10 @@
             <div class="form-group">
                 <label for="txtcustodiaria">Custo Diária:</label>
                 <input type="text" class="form-control" id="txtcustodiaria" th:field="*{custoDiaria}">
+            </div>
+            <div class="form-group">
+                <label for="filefoto">Foto:</label>
+                <input type="file" class="form-control" id="filefoto" name="file">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
