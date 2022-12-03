@@ -1,8 +1,6 @@
 package br.univille.locadoranacional.controller;
 
-import java.security.Provider.Service;
-
-import javax.print.ServiceUI;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,18 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.locadoranacional.entity.Aluguel;
+import br.univille.locadoranacional.service.ClienteService;
+import br.univille.locadoranacional.service.FuncionarioService;
 import br.univille.locadoranacional.service.impl.AluguelService;
 
 @Controller
 @RequestMapping("/aluguel")
 public class AluguelController {
    
+    @Autowired
+    private ClienteService servicoCliente;
+
+    @Autowired
+    private FuncionarioService servicoFuncionario;
 
     @Autowired
     private AluguelService service;
-
-    @Autowired
-    private AluguelService aluguelService;
 
     @GetMapping
     public ModelAndView index(){
@@ -33,10 +35,16 @@ public class AluguelController {
     
    }
 
-   @GetMapping("/novo")
+    @GetMapping("/novo")
     public ModelAndView novo() {
         var aluguel = new Aluguel();
-        return new ModelAndView("aluguel/form", "aluguel", aluguel);
+        var listaClientes = servicoCliente.getAll();
+        var listaFuncionarios = servicoFuncionario.getAll();
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("aluguel", aluguel);
+        dados.put("listaClientes", listaClientes);
+        dados.put("listaFuncionarios", listaFuncionarios);
+        return new ModelAndView("aluguel/form", dados);
     }
 
     
