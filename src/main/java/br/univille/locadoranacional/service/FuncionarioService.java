@@ -12,4 +12,5 @@ public interface FuncionarioService {
     Funcionario getOne(long id);
 
     void delete(long id);
+    
 }

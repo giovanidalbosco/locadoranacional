@@ -7,48 +7,67 @@
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-          <form th:action="@{/aluguel/(form)}" 
+            <form th:action="@{/aluguel/(form)}" 
                 method="POST" th:object="${aluguel}">
 
                 <input type="hidden" th:field="*{id}">
              
                 <div class="form-group">
-                   <label for="txtid">Id:</label>
-                   <input type="text" th:field="*{id}" class="form-control" id="id">
-                   <p th:if="${#fields.hasErrors('id')}"
-                       th:errors="*{id}"
-                       class="alert alert-danger"></p>
-              </div>
+                    <label for="txtid">Id:</label>
+                    <input type="text" th:field="*{id}" class="form-control" id="txtid">
+                    <p th:if="${#fields.hasErrors('id')}"
+                        th:errors="*{id}"
+                        class="alert alert-danger"></p>
+                </div>
 
-              <div class="form-group">
-                <label for="txtdiarias">Diárias:</label>
-                <input type="text" th:field="*{diarias}" class="form-control" id="txtdiarias">
-                <p th:if="${#fields.hasErrors('diarias')}"
-                th:errors="*{diarias}"
-                class="alert alert-danger"></p>
-           </div>
+                <div class="form-group">
+                    <label for="txtcliente">Cliente:</label>
+                    <select class="form-select" th:field="*{cliente}" id="txtcliente">
+                        <option value="0">Selecione uma opção</option>
+                        <option th:each="cliente : ${listaClientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('cliente')}"
+                        th:errors="*{cliente}"
+                        class="alert alert-danger"></p>
+                </div>
 
-           <div class="form-group">
-            <label for="txtdataRetirada">Data da Reirada:</label>
-            <input type="date" th:field="*{dataRetirada}" class="form-control" id="txtdataRetirada">
-            <p th:if="${#fields.hasErrors('dataRetirada')}"
-            th:errors="*{dataRetirada}"
-            class="alert alert-danger"></p>
-            
-       </div>
+                <div class="form-group">
+                    <label for="txtfuncionario">Funcionário:</label>
+                    <select class="form-select" th:field="*{funcionario}" id="txtfuncionario">
+                        <option value="0">Selecione uma opção</option>
+                        <option th:each="funcionario : ${listaFuncionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('funcionario')}"
+                        th:errors="*{funcionario}"
+                        class="alert alert-danger"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtdiarias">Diárias:</label>
+                    <input type="text" th:field="*{diarias}" class="form-control" id="txtdiarias">
+                    <p th:if="${#fields.hasErrors('diarias')}"
+                        th:errors="*{diarias}"
+                        class="alert alert-danger"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtdataRetirada">Data da Retirada:</label>
+                    <input type="date" th:field="*{dataRetirada}" class="form-control" id="txtdataRetirada">
+                    <p th:if="${#fields.hasErrors('dataRetirada')}"
+                        th:errors="*{dataRetirada}"
+                        class="alert alert-danger"></p>
+                </div>
                
-              <div class="form-group">
-                  <label for="txtdataEntrega">Data da Entrega:</label>
-                  <input type="date" th:field="*{dataEntrega}" class="form-control" id="txtdataEntrega">
-                  <p th:if="${#fields.hasErrors('dataEntrega')}"
-                  th:errors="*{dataEntrega}"
-                  class="alert alert-danger"></p>
-             </div>
+                <div class="form-group">
+                    <label for="txtdataEntrega">Data da Entrega:</label>
+                    <input type="date" th:field="*{dataEntrega}" class="form-control" id="txtdataEntrega">
+                    <p th:if="${#fields.hasErrors('dataEntrega')}"
+                        th:errors="*{dataEntrega}"
+                        class="alert alert-danger"></p>
+                </div>
             
-            
-           
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>            
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>            
         </main>
         <footer th:include="layout :: footer"></footer>
     </body>

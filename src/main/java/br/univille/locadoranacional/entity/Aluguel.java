@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Aluguel {
@@ -16,7 +20,11 @@ public class Aluguel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int diarias;
+    @Temporal(value = TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataRetirada;
+    @Temporal(value = TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataEntrega;
    
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
@@ -28,6 +36,30 @@ public class Aluguel {
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Pagamento pagamento;
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    public Carro getCarro() {
+        return carro;
+    }
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
     public long getId() {
         return id;
     }

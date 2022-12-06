@@ -7,7 +7,7 @@
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-          <form th:action="@{/cliente/(form)}" 
+          <form th:action="@{/clientes/(form)}"
                 method="POST" th:object="${cliente}">
 
                 <input type="hidden" th:field="*{id}">
@@ -15,34 +15,22 @@
                 <div class="form-group">
                    <label for="txtnome">Nome:</label>
                    <input type="text" th:field="*{nome}" class="form-control" id="txtnome">
-                   <p th:if="${#fields.hasErrors('nome')}"
-                       th:errors="*{nome}"
-                       class="alert alert-danger"></p>
-              </div>
+                </div>
 
-              <div class="form-group">
-                <label for="txttelefone">Telefone:</label>
-                <input type="text" th:field="*{telefone}" class="form-control" id="txttelefone">
-                <p th:if="${#fields.hasErrors('telefone')}"
-                th:errors="*{telefone}"
-                class="alert alert-danger"></p>
-           </div>
+                <div class="form-group">
+                    <label for="txttelefone">Telefone:</label>
+                    <input type="text" th:field="*{telefone}" class="form-control" id="txttelefone">
+                </div>
 
-           <div class="form-group">
-            <label for="txtemail">Email:</label>
-            <input type="text" th:field="*{email}" class="form-control" id="txtemail">
-            <p th:if="${#fields.hasErrors('email')}"
-            th:errors="*{email}"
-            class="alert alert-danger"></p>
-       </div>
+                <div class="form-group">
+                    <label for="txtemail">Email:</label>
+                    <input type="text" th:field="*{email}" class="form-control" id="txtemail">
+                </div>
                
-              <div class="form-group">
-                  <label for="txtendereco">Endereço:</label>
-                  <input type="text" th:field="*{endereco}" class="form-control" id="txtendereco">
-                  <p th:if="${#fields.hasErrors('endereco')}"
-                  th:errors="*{endereco}"
-                  class="alert alert-danger"></p>
-             </div>
+                <div class="form-group">
+                    <label for="txtendereco">Endereço:</label>
+                    <input type="text" th:field="*{endereco}" class="form-control" id="txtendereco">
+                </div>
             
             
            
