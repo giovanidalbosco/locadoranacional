@@ -19,10 +19,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="umCliente : ${listaClientes}">
-                    <td th:text="${umCliente.diaria}"></td>
-                    <td th:text="${umCliente.retirada}"></td>
-                    <td th:text="${umCliente.entrega}"></td>  
+                    <tr th:each="aluguel : ${listaAluguel}">
+                    <td th:text="${aluguel.cliente.nome}"></td>
+                    <td th:text="${aluguel.diarias}"></td>
+                    <td th:text="${#dates.format(aluguel.dataRetirada, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td>  
 
                 </tbody>
                

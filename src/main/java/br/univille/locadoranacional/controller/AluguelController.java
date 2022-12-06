@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.locadoranacional.entity.Aluguel;
+import br.univille.locadoranacional.service.AluguelService;
+import br.univille.locadoranacional.service.CarroService;
 import br.univille.locadoranacional.service.ClienteService;
 import br.univille.locadoranacional.service.FuncionarioService;
-import br.univille.locadoranacional.service.impl.AluguelService;
 
 @Controller
 @RequestMapping("/aluguel")
@@ -26,6 +27,9 @@ public class AluguelController {
     private FuncionarioService servicoFuncionario;
 
     @Autowired
+    private CarroService servicoCarro;
+
+    @Autowired
     private AluguelService service;
 
     @GetMapping
@@ -35,12 +39,14 @@ public class AluguelController {
     
    }
 
-    @GetMapping("/novo")
-    public ModelAndView novo() {
+    @GetMapping("/novo/{id}")
+    public ModelAndView novo(@PathVariable("id") long id) {
+        var carro = servicoCarro.getOne(id);
         var aluguel = new Aluguel();
         var listaClientes = servicoCliente.getAll();
         var listaFuncionarios = servicoFuncionario.getAll();
         HashMap<String, Object> dados = new HashMap<>();
+        dados.put("carroEscolhido", carro);
         dados.put("aluguel", aluguel);
         dados.put("listaClientes", listaClientes);
         dados.put("listaFuncionarios", listaFuncionarios);
@@ -49,7 +55,7 @@ public class AluguelController {
 
     
     @PostMapping(params = "form")
-    public ModelAndView save(Aluguel aluguel, AluguelService service) {
+    public ModelAndView save(Aluguel aluguel) {
         service.save(aluguel);
 
         return new ModelAndView("redirect:/aluguel");
