@@ -13,32 +13,33 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                 
                     <div th:each="carro: ${listaCarros}" class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="100%">
-                                <img th:src="@{'/carros/image/'+${carro.id}}" style="width: 100%; height: 100%;">
-                            </svg>
-    
-                            <ul class="list-group">
-                                
-                                <li class="list-group-item" th:text="${carro.marca}"></li>
-                                <li class="list-group-item" th:text="${carro.modelo}"></li>
-                                <li class="list-group-item" th:text="${carro.placa}"></li>
-                                <li class="list-group-item" th:text="${carro.cor}"></li>
-                                <li class="list-group-item" th:text="${carro.custoDiaria}"></li>
-                                
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Detalhes</a>
-                                        <a class="btn btn-primary" th:href="@{/aluguel/novo/{id}(id=${carro.id})}">Alugar</a>
+                        <div class="card">
+                            
+                            <img th:src="@{'/carros/image/'+${carro.id}}" class="card-img-top">
+                            
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    
+                                    <li class="list-group-item" th:text="${carro.marca}"></li>
+                                    <li class="list-group-item" th:text="${carro.modelo}"></li>
+                                    <li class="list-group-item" th:text="${carro.placa}"></li>
+                                    <li class="list-group-item" th:text="${carro.cor}"></li>
+                                    <li class="list-group-item" th:text="${carro.custoDiaria}"></li>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Detalhes</a>
+                                            <a class="btn btn-primary" th:href="@{/aluguel/novo/{id}(id=${carro.id})}">Alugar</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Alterar</a>
-                                        <button class="btn btn-danger js-delete" th:data-id="${carro.id}">Excluir</button>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Alterar</a>
+                                            <button class="btn btn-danger js-delete" th:data-id="${carro.id}">Excluir</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
         

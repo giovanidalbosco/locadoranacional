@@ -11,13 +11,18 @@
                 method="POST" th:object="${aluguel}">
 
                 <input type="hidden" th:field="*{id}">
-             
-                <div class="form-group">
-                    <label for="txtid">Id:</label>
-                    <input type="text" th:field="*{id}" class="form-control" id="txtid">
-                    <p th:if="${#fields.hasErrors('id')}"
-                        th:errors="*{id}"
-                        class="alert alert-danger"></p>
+
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{'/carros/image/'+${carroEscolhido.id}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="@{{marca} - {modelo}(marca=${carroEscolhido.marca}, modelo=${carroEscolhido.modelo})}"></h5>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:text="${carroEscolhido.placa}"></li>
+                            <li class="list-group-item" th:text="${carroEscolhido.cor}"></li>
+                            <li class="list-group-item" th:text="${carroEscolhido.custoDiaria}"></li>
+                        </ul>
+                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carroEscolhido.id})}">Detalhes</a>
+                    </div>
                 </div>
 
                 <div class="form-group">
