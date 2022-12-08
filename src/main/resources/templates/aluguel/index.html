@@ -25,12 +25,34 @@
                     <td th:text="${aluguel.diarias}"></td>
                     <td th:text="${#dates.format(aluguel.dataRetirada, 'dd/MM/yyyy')}"></td>
                     <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td> 
-    
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/aluguel/editar/' + ${aluguel.id}}">Alterar</a>
+                        <!-- <button class="btn btn-danger js-delete" th:data-id="${aluguel.id}">Excluir</button> -->
+                    </td>
                 </tr>
                 </tbody>
             </table> 
             <a href="javascript:window.history.go(-1)">Voltar</a>  
         </main>
+        <div class="modal" tabindex="-1" id="modalaluguel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirma exclusão?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer th:include="layout :: footer"></footer>
+        <script th:src="@{/scriptAluguel.js}"></script>
     </body>
 </html>
