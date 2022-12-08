@@ -36,16 +36,7 @@
                         class="alert alert-danger"></p>
                 </div>
 
-                <div class="form-group">
-                    <label for="txtfuncionario">Funcionário:</label>
-                    <select class="form-select" th:field="*{funcionario}" id="txtfuncionario">
-                        <option value="0">Selecione uma opção</option>
-                        <option th:each="funcionario : ${listaFuncionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome}"></option>
-                    </select>
-                    <p th:if="${#fields.hasErrors('funcionario')}"
-                        th:errors="*{funcionario}"
-                        class="alert alert-danger"></p>
-                </div>
+
 
                 <div class="form-group">
                     <label for="txtdiarias">Diárias:</label>

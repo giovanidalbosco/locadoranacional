@@ -7,10 +7,10 @@
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-            <a href="/aluguel/novo" class="btn btn-primary">Novo</a>
+            <!-- <a href="/aluguel/novo" class="btn btn-primary">Novo</a> -->
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr><th>Id</th>
                         <th>Cliente</th>
                         <th>Diarias</th>
                         <th>Data da Retirada</th>
@@ -20,14 +20,16 @@
                 </thead>
                 <tbody>
                     <tr th:each="aluguel : ${listaAluguel}">
-                    <td th:text="${aluguel.cliente.nome}"></td>
+                    <td th:text="${aluguel.id}"></td>     
+                    <td th:text="${aluguel.cliente?.nome}"></td>
                     <td th:text="${aluguel.diarias}"></td>
                     <td th:text="${#dates.format(aluguel.dataRetirada, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td>  
-
+                    <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td> 
+    
+                </tr>
                 </tbody>
-               
-            </table>   
+            </table> 
+            <a href="javascript:window.history.go(-1)">Voltar</a>  
         </main>
         <footer th:include="layout :: footer"></footer>
     </body>

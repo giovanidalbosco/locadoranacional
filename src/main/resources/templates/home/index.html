@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      <link rel="stylesheet" href="style.css" />
+    <head th:include="layout :: head"></head>
+
+    <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Locadora Nacional</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/funcionarios}">Funcionários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aluguel}">Aluguel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/clientes}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pagamentos}">Pagamentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/carros}">Carros</a>
+                </li>
+               
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <img class="nacional" src="https://www.blogdaslocadoras.com.br/wp-content/uploads/2014/10/national.jpg" alt="" />
+    </main>
+    <footer th:include="layout :: footer"></footer>
+    </body>
+</html>
