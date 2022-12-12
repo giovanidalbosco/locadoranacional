@@ -7,28 +7,22 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <a href="/funcionarios/novo" class="btn btn-primary">Novo</a>
-        <table class="table" id="tabfuncionarios">
+        <a href="/pagamentos/novo" class="btn btn-primary">Novo</a>
+        <table class="table" id="tabpagamentos">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Endereço</th>
-                    <th>Cargo</th>
+                    <th>ID</th>
+                    <th>Metodo</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="funcionario : ${listaFuncionarios}">
-                    <td th:text="${funcionario.nome}"></td>
-                    <td th:text="${funcionario.telefone}"></td>
-                    <td th:text="${funcionario.email}"></td>
-                    <td th:text="${funcionario.endereco}"></td>
-                    <td th:text="${funcionario.cargo}"></td>
+                <tr th:each="pagamento : ${listaPagamentos}">
+                    <td th:text="${pagamento.id}"></td>
+                    <td th:text="${pagamento.metodo}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/funcionarios/editar/{id}(id=${funcionario.id})}">Alterar</a>
-                        <button class="btn btn-danger js-delete" th:data-id="${funcionario.id}">Excluir</button>
+                        <a class="btn btn-primary" th:href="@{/pagamentos/editar/{id}(id=${pagamento.id})}">Alterar</a>
+                        <button class="btn btn-danger js-delete" th:data-id="${pagamento.id}">Excluir</button>
                     </td>
                 </tr>
             </tbody>
@@ -36,15 +30,15 @@
         <a href="javascript:window.history.go(-1)">Voltar</a>  
     </main>
 
-    <div class="modal" tabindex="-1" id="modalfuncionario">
+    <div class="modal" tabindex="-1" id="modalpagamento">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir Funcionário</h5>
+                    <h5 class="modal-title">Excluir pagamento</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Confirmar exclusão do funcionário?</p>
+                    <p>Confirma a exclusão da pagamento?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
@@ -53,9 +47,8 @@
             </div>
         </div>
     </div>
-    
 
     <footer th:include="layout :: footer"></footer>
-    <script th:src="@{/scriptFuncionario.js}"></script>
-    
+    <script th:src="@{/scriptPagamento.js}"></script>
 </body>
+

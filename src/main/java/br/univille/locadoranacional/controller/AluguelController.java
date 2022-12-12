@@ -72,13 +72,21 @@ public class AluguelController {
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") long id) {
         var aluguel = service.getOne(id);
-        return new ModelAndView("aluguel/form", "aluguel", aluguel);
+        var carro = servicoCarro.getOne(id);
+        var listaClientes = servicoCliente.getAll();
+        var listaFuncionarios = servicoFuncionario.getAll();
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("carroEscolhido", carro);
+        dados.put("aluguel", aluguel);
+        dados.put("listaClientes", listaClientes);
+        dados.put("listaFuncionarios", listaFuncionarios);
+        return new ModelAndView("aluguel/form", dados);
     }
 
     @GetMapping("/deletar/{id}")
     public ModelAndView deletar(@PathVariable("id") long id) {
         service.delete(id);
-
+        
         return new ModelAndView("redirect:/aluguel");
     }
 }
