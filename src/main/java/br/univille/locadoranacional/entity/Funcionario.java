@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Entity
@@ -12,17 +13,19 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotBlank(message = "Campo nome não pode ser em branco") 
     private String nome;
     @Pattern(regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}", flags = Pattern.Flag.CANON_EQ, message = "Telefone Inválido. Utilize o formato (99) 99999-9999")
     private String telefone;
     @Email
+    @NotBlank(message = "Campo email não pode ser em branco")
     private String email;
+    @NotBlank(message = "Campo endereço não pode ser em branco")
     private String endereco;
     private String usuario;
     private String senha;
     private String cargo;
     
-
 
     public long getId() {
         return id;

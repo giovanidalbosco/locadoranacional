@@ -28,13 +28,12 @@
                                     
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Detalhes</a>
                                             <a class="btn btn-primary" th:href="@{/aluguel/novo/{id}(id=${carro.id})}">Alugar</a>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carro.id})}">Alterar</a>
+                                            <a class="btn btn-primary" th:href="@{/carros/editar/{carroId}(carroId=${carro.id})}">Alterar</a>
                                             <button class="btn btn-danger js-delete" th:data-id="${carro.id}">Excluir</button>
                                         </div>
                                     </div>
