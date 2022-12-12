@@ -17,6 +17,7 @@ public class Carro {
     private float custoDiaria;
     private String foto;
 
+    
     public long getId() {
         return id;
     }

@@ -12,6 +12,8 @@
 
                 <input type="hidden" th:field="*{id}">
 
+                <input type="hidden" name="carro" id="carro" th:value="${carroEscolhido.id}">
+
                 <div class="card" style="width: 18rem;">
                     <img th:src="@{'/carros/image/'+${carroEscolhido.id}}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -21,7 +23,6 @@
                             <li class="list-group-item" th:text="${carroEscolhido.cor}"></li>
                             <li class="list-group-item" th:text="${carroEscolhido.custoDiaria}"></li>
                         </ul>
-                        <a class="btn btn-primary" th:href="@{/carros/editar/{id}(id=${carroEscolhido.id})}">Detalhes</a>
                     </div>
                 </div>
 
@@ -48,14 +49,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="txtdiarias">Diárias:</label>
-                    <input type="text" th:field="*{diarias}" class="form-control" id="txtdiarias">
-                    <p th:if="${#fields.hasErrors('diarias')}"
-                        th:errors="*{diarias}"
-                        class="alert alert-danger"></p>
-                </div>
-
-                <div class="form-group">
                     <label for="txtdataRetirada">Data da Retirada:</label>
                     <input type="date" th:field="*{dataRetirada}" class="form-control" id="txtdataRetirada">
                     <p th:if="${#fields.hasErrors('dataRetirada')}"
@@ -69,6 +62,27 @@
                     <p th:if="${#fields.hasErrors('dataEntrega')}"
                         th:errors="*{dataEntrega}"
                         class="alert alert-danger"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtmetodo">Forma pagamento:</label>
+                    <select class="form-select" th:field="*{pagamento.metodo}" id="txtmetodo">
+                        <option value="0">Selecione uma opção</option>
+                        <option value="Cartão">Cartão</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Pix">Pix</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtparcelas">Parcelas:</label>
+                    <select class="form-select" th:field="*{pagamento.parcelas}" id="txtparcelas">
+                        <option value="0">Selecione uma opção</option>
+                        <option value="À vista">À vista</option>
+                        <option value="2x">2x</option>
+                        <option value="3x">3x</option>
+                        <option value="4x">4x</option>
+                    </select>
                 </div>
             
                 <button type="submit" class="btn btn-primary">Enviar</button>

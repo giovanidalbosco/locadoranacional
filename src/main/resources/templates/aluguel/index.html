@@ -7,23 +7,27 @@
     <body>
         <nav th:replace="layout :: menu"></nav>
         <main class="container">
-            <a href="/aluguel/novo" class="btn btn-primary">Novo</a>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Cliente</th>
+                        <th>Modelo</th>
                         <th>Diarias</th>
                         <th>Data da Retirada</th>
                         <th>Data da Entrega</th>
-                      
+                        <th>Total</th>
+                        <th>Pagamento</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="aluguel : ${listaAluguel}">
-                    <td th:text="${aluguel.cliente.nome}"></td>
+                    <td th:text="${aluguel.cliente?.nome}"></td>
+                    <td th:text="${aluguel.carro?.modelo}"></td>
                     <td th:text="${aluguel.diarias}"></td>
                     <td th:text="${#dates.format(aluguel.dataRetirada, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td>  
+                    <td th:text="${#dates.format(aluguel.dataEntrega, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${aluguel.valorTotal}"></td>
+                    <td th:text="${aluguel.pagamento.metodo}"></td>  
 
                 </tbody>
                

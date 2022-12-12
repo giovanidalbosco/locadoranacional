@@ -1,5 +1,8 @@
 package br.univille.locadoranacional.controller;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ import br.univille.locadoranacional.service.FuncionarioService;
 @Controller
 @RequestMapping("/aluguel")
 public class AluguelController {
-   
+    
     @Autowired
     private ClienteService servicoCliente;
 
@@ -39,8 +42,8 @@ public class AluguelController {
     
    }
 
-    @GetMapping("/novo/{id}")
-    public ModelAndView novo(@PathVariable("id") long id) {
+    @GetMapping("/novo/{carroId}")
+    public ModelAndView novo(@PathVariable("carroId") long id) {
         var carro = servicoCarro.getOne(id);
         var aluguel = new Aluguel();
         var listaClientes = servicoCliente.getAll();
@@ -56,6 +59,11 @@ public class AluguelController {
     
     @PostMapping(params = "form")
     public ModelAndView save(Aluguel aluguel) {
+        LocalDateTime data1 = aluguel.getDataRetirada().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        LocalDateTime data2 = aluguel.getDataEntrega().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        long diarias = Duration.between(data1, data2).toDays();
+        aluguel.setValorTotal(diarias * aluguel.getCarro().getCustoDiaria());
+        aluguel.setDiarias(diarias);
         service.save(aluguel);
 
         return new ModelAndView("redirect:/aluguel");
