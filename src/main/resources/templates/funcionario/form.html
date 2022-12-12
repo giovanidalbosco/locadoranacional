@@ -12,6 +12,7 @@
             <div class="form-group">
                 <label for="txtnome">Nome:</label>
                 <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
+                <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger"></p>
             </div>
             <div class="form-group">
                 <label for="txttel">Telefone:</label>
@@ -26,10 +27,12 @@
             <div class="form-group">
                 <label for="txtendereco">Endereço:</label>
                 <input type="text" class="form-control" id="txtendereco" th:field="*{endereco}">
+                <p th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}" class="alert alert-danger"></p>
             </div>
             <div class="form-group">
                 <label for="txtcargo">Cargo:</label>
                 <input type="text" class="form-control" id="txtcargo" th:field="*{cargo}">
+                <p th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}" class="alert alert-danger"></p>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

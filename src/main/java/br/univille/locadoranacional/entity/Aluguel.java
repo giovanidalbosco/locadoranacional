@@ -19,7 +19,7 @@ public class Aluguel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private int diarias;
+    private long diarias;
     @Temporal(value = TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataRetirada;
@@ -33,9 +33,11 @@ public class Aluguel {
     private Funcionario funcionario;
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Carro carro;
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
     private Pagamento pagamento;
+    private float valorTotal;
 
+    
     public Cliente getCliente() {
         return cliente;
     }
@@ -66,10 +68,10 @@ public class Aluguel {
     public void setId(long id) {
         this.id = id;
     }
-    public int getDiarias() {
+    public long getDiarias() {
         return diarias;
     }
-    public void setDiarias(int diarias) {
+    public void setDiarias(long diarias) {
         this.diarias = diarias;
     }
     public Date getDataRetirada() {
@@ -84,7 +86,12 @@ public class Aluguel {
     public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
-
+    public float getValorTotal() {
+        return valorTotal;
+    }
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
     
     
 }

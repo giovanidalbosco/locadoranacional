@@ -16,6 +16,7 @@ public class Pagamento {
     private int numero;
     private Date validade;
     private int codSeguranca;
+    private String parcelas;
 
 
     public long getId() {
@@ -47,6 +48,12 @@ public class Pagamento {
     }
     public void setCodSeguranca(int codSeguranca) {
         this.codSeguranca = codSeguranca;
+    }
+    public String getParcelas() {
+        return parcelas;
+    }
+    public void setParcelas(String parcelas) {
+        this.parcelas = parcelas;
     }
 
     

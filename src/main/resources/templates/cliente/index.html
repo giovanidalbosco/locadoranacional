@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"></html>
 
-    <head th:include="layout :: head"></head>
+<head th:include="layout :: head"></head>
 
-    <body>
-         <nav th:replace="layout :: menu"></nav> 
-        <main class="container">
-            <a href="/clientes/novo" class="btn btn-primary">Novo</a>
-            
-            <table class="table" id="tabclientes">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Endereço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="umCliente : ${listaClientes}">
-                    <td th:text="${umCliente.id}"></td>
-                    <td th:text="${umCliente.nome}"></td>
-                    <td th:text="${umCliente.telefone}"></td>
-                    <td th:text="${umCliente.email}"></td>
-                    <td th:text="${umCliente.endereco}"></td>    
+<body>
+    <nav th:replace="layout :: menu"></nav> 
+    <main class="container">
+        <a href="/clientes/novo" class="btn btn-primary">Novo</a>
+        
+        <table class="table" id="tabclientes">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="umCliente : ${listaClientes}">
+                <td th:text="${umCliente.nome}"></td>
+                <td th:text="${umCliente.telefone}"></td>
+                <td th:text="${umCliente.email}"></td>
+                <td th:text="${umCliente.endereco}"></td>    
+                <td>
+                    <a class="btn btn-primary" th:href="@{/clientes/alterar/{id}(id=${umCliente.id})}">Alterar</a>
+                    <button class="btn btn-danger js-delete" th:data-id="${umCliente.id}">Excluir</button>
+                </td>
+            </tbody>
+        </table>
+    </main>
 
-                </tbody>
-            </table>
-            <a href="javascript:window.history.go(-1)">Voltar</a>  
-        </main>
-
-        <div class="modal" tabindex="-1" id="modalcliente">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Excluir Cliente</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Confirmar exclusão do Cliente?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
-                        <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
-                    </div>
+    <div class="modal" tabindex="-1" id="modalcliente">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirmar exclusão do cliente?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+
+    <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/scriptCliente.js}"></script>
+</body>
